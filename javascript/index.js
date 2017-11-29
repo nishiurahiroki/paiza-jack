@@ -23,9 +23,9 @@ process.stdin.on('end', () => {
   }
 
   const total = myCards.reduce((previous, current) => (+previous) + (+current));
-  if(total < 10){
-    GAME.hit();
-  }else{
+  if(17 <= total) {
     GAME.stand();
+  } else {
+    GAME.hit();
   }
 });
