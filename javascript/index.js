@@ -1,27 +1,31 @@
-const BET_CHIP = '1';
+const GAME = {
+  betChip : '1',
+  hit : () => console.log('HIT'),
+  stand : () => console.log('STAND')
+};
 
 process.stdin.resume();
 process.stdin.setEncoding('utf8');
-let inputData = '';
+let inputString = '';
 process.stdin.on('data', (chunk) => {
-  inputData += chunk;
+  inputString += chunk;
 });
 
 process.stdin.on('end', () => {
-  const myCards = inputData
+  const myCards = inputString
                     .split('\n')[0]
                     .split(' ')
 
   const isChipBetTurn = '0' === myCards[0]
   if(isChipBetTurn){
-    console.log(BET_CHIP); // 賭けチップ数
+    console.log(GAME.betChip); // 賭けチップ数
     return;
   }
 
-  const total = myCards.reduce((previous, current) => (+previous) + (+current))
-  if(total < 10){ //★カードを引く条件の合計値を変えてみよう！★
-    console.log("HIT");// カード引く
+  const total = myCards.reduce((previous, current) => (+previous) + (+current));
+  if(total < 10){
+    GAME.hit();
   }else{
-    console.log("STAND");// 勝負
+    GAME.stand();
   }
 });
