@@ -1,7 +1,7 @@
 const GAME = {
-  betChip : '1',
   hit : () => console.log('HIT'),
-  stand : () => console.log('STAND')
+  stand : () => console.log('STAND'),
+  betChip : chip => console.log('' + chip)
 };
 
 process.stdin.resume();
@@ -18,7 +18,7 @@ process.stdin.on('end', () => {
 
   const isChipBetTurn = '0' === myCards[0]
   if(isChipBetTurn){
-    console.log(GAME.betChip); // 賭けチップ数
+    GAME.betChip(1);
     return;
   }
 
